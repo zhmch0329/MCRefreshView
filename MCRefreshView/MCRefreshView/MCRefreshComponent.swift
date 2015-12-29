@@ -143,24 +143,18 @@ class MCRefreshComponent: UIView {
             return
         }
         
-        if let newValue = change?[NSKeyValueChangeNewKey] {
-            if let oldValue = change?[NSKeyValueChangeOldKey] {
-                if !oldValue.isEqual(newValue)  {
-                    if keyPath == MCRefreshConst.ContentSize {
-                        scrollViewContentSizeDidChange(change)
-                    }
-                    
-                    guard !self.hidden else {
-                        return
-                    }
-                    
-                    if keyPath == MCRefreshConst.ContentOffset {
-                        scrollViewContentOffsetDidChange(change)
-                    } else if keyPath == MCRefreshConst.PanState {
-                        scrollViewPanStateDidChange(change)
-                    }
-                }
-            }
+        if keyPath == MCRefreshConst.ContentSize {
+            scrollViewContentSizeDidChange(change)
+        }
+        
+        guard !self.hidden else {
+            return
+        }
+        
+        if keyPath == MCRefreshConst.ContentOffset {
+            scrollViewContentOffsetDidChange(change)
+        } else if keyPath == MCRefreshConst.PanState {
+            scrollViewPanStateDidChange(change)
         }
     }
     

@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         tableView.header = header
         
 
-        tableView.header.beginRefreshing()
+        tableView.header?.beginRefreshing()
     }
 
     override func didReceiveMemoryWarning() {

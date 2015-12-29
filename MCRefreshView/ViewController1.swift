@@ -42,7 +42,7 @@ class ViewController1: UIViewController, UICollectionViewDataSource {
         collectionView.header = header
         
         
-        collectionView.header.beginRefreshing()
+        collectionView.header?.beginRefreshing()
     }
     
     private func reloadData() {

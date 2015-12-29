@@ -8,16 +8,6 @@
 
 import UIKit
 
-extension NSObject {
-    class func exchangeInstanceMethod1(method1: Selector, method2: Selector) {
-        method_exchangeImplementations(class_getInstanceMethod(self, method1), class_getInstanceMethod(self, method2))
-    }
-    
-    class func exchangeClassMethod1(method1: Selector, method2: Selector) {
-        method_exchangeImplementations(class_getClassMethod(self, method1), class_getClassMethod(self, method2))
-    }
-}
-
 private var HeaderAssociationKey: UInt8 = 29
 private var FooterAssociationKey: UInt8 = 13
 private var ReloadDataClosureAssociationKey: UInt8 = 27
@@ -74,29 +64,7 @@ extension UIScrollView {
         return totalCount
     }
     
-    var reloadDataClosure: ((Int) -> Void)? {
-        get {
-            return self.reloadDataClosure
-//            return objc_getAssociatedObject(self, &ReloadDataClosureAssociationKey) as? (Int) -> Void
-        }
-        set(newValue) {
-            self.reloadDataClosure = newValue
-//            objc_setAssociatedObject(self, &ReloadDataClosureAssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
-        }
-    }
-    
     var isHeaderRefreshing: Bool? {
         return header?.isRefreshing()
     }
-}
-
-
-extension UITableView {
-    func mcReloadData() {
-        self.mcReloadData()
-        
-        
-    }
-    
-    
 }
